@@ -123,6 +123,7 @@
           <a class="" >     </a>
         </li>
         <li>
+          <button id="myButton" style="background-color: #e7b34b; padding: 12px 28px; margin-right: 16px; cursor: pointer; color: white;">Log In</button>
           <input type="text black" style="padding: 12px"  placeholder="Search Website...">
         </li>
       </ul>
@@ -157,6 +158,13 @@
               <input type="text" style="text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="fname" name="fname" placeholder="Enter Party Pin"><br><br>
               <div id="button"style="background-color: #b64116; padding: 12px 12px; margin-right: 16px; cursor: pointer; color: white;"><a href="guestScreen.html">Submit</a></div>
             </form>
+
+            <h1>Submit Party Pin</h1>
+                <form action="/post" method="POST">
+                  <input type="text" id="submit" name="submit" placeholder="Enter Party Pin" required>
+                  <button type="submit">Submit</button>
+                </form>
+          </li>
           </li>
       </ul>
     </div>
