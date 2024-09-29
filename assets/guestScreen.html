@@ -69,11 +69,11 @@
   }
   
   .split {
-    height: 92%;
-    width: 50%;
+    height: 80%;
+    width: 70%;
     position: fixed;
     z-index: 1;
-    top: 8%;
+    top: 20%;
     overflow-x: hidden;
     padding-top: 20px;
   }
@@ -94,7 +94,7 @@
   }
   </style>
     <title>JukeBox</title>
-    <body style="background-color:#161925;">
+    <body style="background-color:#058789;">
     </body>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
@@ -107,7 +107,7 @@
     <nav class="reg" style="background-color: #b64116" role="navigation">
      <div class="nav-wrapper container" style="background-color: #b64116">
       <a href="https://example.com">
-        <img src="/Users/arshiagarg/Downloads/Designer.jpeg" width="64" height="64" alt="Button Image">
+        <img src="/Users/arshiagarg/Desktop/jukebox/Designer.jpeg" width="64" height="64" alt="Button Image">
       </a>
       
       <ul class="right hide-on-med-and-down">
@@ -170,15 +170,24 @@
     
     </div>
   </nav>
-  
+  <div class></div>
+    <div class="container">
+      <h1 class="header center" style="color:#e7b34b; font-size:3vw">Party Guest</h1>
+    </div> 
+  </div>
     <div class="split left">
-        <h4 style="margin-left: 16px; color: #058789;">Requested Song Lyrics</h4>
-        <p style="margin-left: 32px; margin-right: 32px; color: #058789;">_______________________________________________________________________________</p>
-    </div>
+        <h4 style="margin-left: 70px;color: #058789;">Song Submission:</h4>
+        <p style="margin-left: 32px; margin-right: 32px; color: #058789;">___________________________________________</p>
+        <form action="/action_page.php">
+          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="fname" name="fname" placeholder="Enter Song Title.."><br><br>
+          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="fname" name="fname" placeholder="Enter Song Artist.."><br><br>
+          <input type="submit" style="margin-left: 160px; text-align: center; background-color: #b64116; color: white; padding: 12px 28px;cursor: pointer;" value="Submit">
+        </form>
+      </div>
     
     <div class="split right">
-        <h4 style="margin-left: 16px; color: white;">Explicit Level</h4>
-        <p style="margin-left: 32px; margin-right: 32px; color: white;">_______________________________________________________________________________</p>
+        <h4 style="text-align: center; color: white;">Your Past Song Requests:</h4>
+        <p style="margin-left: 32px; margin-right: 32px; color: white;">___________________________________________________________________________________________________________________</p>
     </div>
 
       <script src="script.js"></script>
