@@ -118,7 +118,8 @@
             <h1 style="color: #e7b34b; font-size:3vw">
                 About JukeBox
             </h1>
-            <p style="line-height: 1.4;font-weight: 300">Welcome to JukeBox! A safe and efficient way for guests to request songs at a party. Party hosts can acquire a secure pin allowing guests to submit requests to the party's song list. Get rid of duplicates and say goodbye to explicit content. Let's keep this party going!</p>
+            <p style="line-height: 1.4;font-weight: 300">Welcome to JukeBox! A safe and efficient way for guests to request songs at a party. 
+              Get rid of duplicates and say good bye to explicit content. Let's keep this party going!</p>
             <button id="closePopup" style="background-color: #b64116; color: white; padding: 12px 28px;">
                 Close
             </button>
@@ -154,7 +155,6 @@
           <a class="" >     </a>
         </li>
         <li>
-          <button id="myButton" style="background-color: #e7b34b; padding: 12px 28px; margin-right: 16px; cursor: pointer; color: white;">Log In</button>
           <input type="text black" style="padding: 12px"  placeholder="Search Website...">
         </li>
       </ul>
@@ -178,10 +178,10 @@
     <div class="split left">
         <h4 style="margin-left: 70px;color: #058789;">Song Submission:</h4>
         <p style="margin-left: 32px; margin-right: 32px; color: #058789;">___________________________________________</p>
-        <form action="/action_page.php">
-          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="fname" name="fname" placeholder="Enter Song Title.."><br><br>
-          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="fname" name="fname" placeholder="Enter Song Artist.."><br><br>
-          <input type="submit" style="margin-left: 160px; text-align: center; background-color: #b64116; color: white; padding: 12px 28px;cursor: pointer;" value="Submit">
+        <form>
+          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="userSong" name="fname" placeholder="Enter Song Title.."><br><br>
+          <input type="text" style="margin-left: 64px; text-align: center; width: 300px; color: white; font-size: 1.4vw;" id="userArtist" name="fname" placeholder="Enter Song Artist.."> <br><br>
+          <input type="button" style="margin-left: 160px; text-align: center; background-color: #b64116; color: white; padding: 12px 28px;cursor: pointer;" value="Submit" onclick="handleRequest()">
         </form>
       </div>
     
@@ -190,6 +190,6 @@
         <p style="margin-left: 32px; margin-right: 32px; color: white;">___________________________________________________________________________________________________________________</p>
     </div>
 
-      <script src="script.js"></script>
+      <script src="songReqs.js"></script>
   </body>
 </html>
