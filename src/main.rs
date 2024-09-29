@@ -15,9 +15,23 @@ use tokio_rustls::TlsAcceptor;
 
 async fn service(req: Request<Incoming>) -> io::Result<Response<Full<Bytes>>> {
     match (req.method(), req.uri().path()) {
-        (&Method::GET, "/assets/logo.jpeg") => Ok(Response::builder()
+        (&Method::GET, "/Designer.jpeg") => Ok(Response::builder()
             .status(200)
-            .body(Full::from(tokio::fs::read("assets/logo.jpeg").await?))
+            .body(Full::from(tokio::fs::read("assets/Designer.jpeg").await?))
+            .unwrap()),
+        (&Method::GET, "/guestScreen.html") => Ok(Response::builder()
+            .status(200)
+            .body(Full::from(
+                tokio::fs::read("assets/guestScreen.html").await?,
+            ))
+            .unwrap()),
+        (&Method::GET, "/hostScreen.html") => Ok(Response::builder()
+            .status(200)
+            .body(Full::from(tokio::fs::read("assets/hostScreen.html").await?))
+            .unwrap()),
+        (&Method::GET, "/") => Ok(Response::builder()
+            .status(200)
+            .body(Full::from(tokio::fs::read("assets/jukeboxPin.html").await?))
             .unwrap()),
         (&Method::POST, "") => Ok(Response::builder()
             .status(200)
@@ -41,7 +55,7 @@ async fn main() -> io::Result<()> {
         .unwrap();
     config.alpn_protocols = vec![b"h2".to_vec(), b"http/1.1".to_vec(), b"http/1.0".to_vec()];
     let acceptor = TlsAcceptor::from(Arc::new(config));
-    let listner = TcpListener::bind("0.0.0.0:4443").await?;
+    let listner = TcpListener::bind("127.0.0.1:4443").await?;
     let service = service_fn(service);
     loop {
         let (stream, _) = listner.accept().await.unwrap();
