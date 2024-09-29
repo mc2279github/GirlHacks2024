@@ -29,6 +29,10 @@ async fn service(req: Request<Incoming>) -> io::Result<Response<Full<Bytes>>> {
             .status(200)
             .body(Full::from(tokio::fs::read("assets/hostScreen.html").await?))
             .unwrap()),
+        (&Method::GET, "/songReqs.js") => Ok(Response::builder()
+            .status(200)
+            .body(Full::from(tokio::fs::read("assets/songReqs.js").await?))
+            .unwrap()),
         (&Method::GET, "/") => Ok(Response::builder()
             .status(200)
             .body(Full::from(tokio::fs::read("assets/jukeboxPin.html").await?))
@@ -55,7 +59,7 @@ async fn main() -> io::Result<()> {
         .unwrap();
     config.alpn_protocols = vec![b"h2".to_vec(), b"http/1.1".to_vec(), b"http/1.0".to_vec()];
     let acceptor = TlsAcceptor::from(Arc::new(config));
-    let listner = TcpListener::bind("127.0.0.1:4443").await?;
+    let listner = TcpListener::bind("127.0.0.1:443").await?;
     let service = service_fn(service);
     loop {
         let (stream, _) = listner.accept().await.unwrap();
