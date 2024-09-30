@@ -6,6 +6,7 @@ Welcome to JukeBox! A safe and efficient way for guests to request songs at a pa
 
 
 To run the webserver you will need to plug the private key and cert into the GirlHacks dir,edit src/main.rs and change the addr the server binds to ,and run the code
+https://www.rust-lang.org/tools/install
 ```rust
 
 let acceptor = TlsAcceptor::from(Arc::new(config));
