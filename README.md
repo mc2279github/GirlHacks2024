@@ -1,30 +1,50 @@
-# GirlHacks2024
+# React + TypeScript + Vite
 
-## Jukebox
-Welcome to JukeBox! A safe and efficient way for guests to request songs at a party. Party hosts can acquire a secure pin allowing guests to submit requests to the party's song list. Get rid of duplicates and say goodbye to explicit content. Let's keep this party going!
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+Currently, two official plugins are available:
 
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-To run the webserver you will need to plug the private key and cert into the GirlHacks dir,edit src/main.rs and change the addr the server binds to ,and run the code
-https://www.rust-lang.org/tools/install
-```rust
+## Expanding the ESLint configuration
 
-let acceptor = TlsAcceptor::from(Arc::new(config));
-let listner = TcpListener::bind("127.0.0.1:4443").await?;
-//                        change this ^^^
-// 127.0.0.1:443 when running for yourself on your computer
-// 0.0.0.0:443 when running for the public
-let service = service_fn(service);
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
+- Configure the top-level `parserOptions` property like this:
 
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-```bash
-#compile the code
-cd GirlHacks2024
-cargo run
-# it wont run as it doent have privlaiges to bind to port 443
-setcap 'cap_net_bind_service=+ep' target/debug/GirlHacks2024
-cargo run
-#the web server should be running
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
